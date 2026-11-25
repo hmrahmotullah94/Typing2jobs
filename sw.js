@@ -1,4 +1,4 @@
-const CACHE_NAME = "typing-jobs-pwa-v1";
+const CACHE_NAME = "typing-jobs-pwa-v1.1";
 const STATIC_ASSETS = [
     "./",
     "./index.html",
