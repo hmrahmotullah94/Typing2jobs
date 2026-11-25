@@ -4,6 +4,22 @@ const pwaBar = document.getElementById("pwaBar");
 const installButton = document.getElementById("installButton");
 const pwaStatus = document.getElementById("pwaStatus");
 
+/* =========================================
+   HIDE INSTALL BUTTON
+========================================= */
+
+function hideInstallButton(){
+
+    const bar = document.getElementById("pwaBar");
+
+    if(bar){
+
+        bar.hidden = true;
+
+    }
+
+}
+
 function updateNetworkStatus() {
     if (!pwaStatus) return;
     if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
