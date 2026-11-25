@@ -1,0 +1,26 @@
+{
+  "name": "Typing Jobs - বাংলা ও ইংরেজি টাইপিং",
+  "short_name": "Type Rahmot",
+  "description": "বাংলা ও ইংরেজি টাইপিং অনুশীলন, বিজয়/ইউনিকোদ মোড এবং অনলাইন লিডারবোর্ডসহ PWA অ্যাপ।",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#e0e4e8",
+  "theme_color": "#1a237e",
+  "lang": "bn",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
