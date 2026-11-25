@@ -35,45 +35,6 @@ if (pwaBar) {
   });
 
 
-function updateNetworkStatus() {
-    if (!pwaStatus) return;
-    if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
-        pwaStatus.textContent = navigator.onLine
-            ? "PWA চালু আছে • অনলাইন"
-            : "PWA চালু আছে • অফলাইন মোড";
-    } else {
-        pwaStatus.textContent = navigator.onLine
-            ? "ফোন বা কম্পিউটারে অ্যাপ হিসেবে ইনস্টল করুন"
-            : "অফলাইন মোডে আছেন • লোকাল অনুশীলন সক্রিয়";
-    }
-}
-
-if ("serviceWorker" in navigator) {
-    window.addEventListener("load", async () => {
-        try {
-            const registration = await navigator.serviceWorker.register("./sw.js", { scope: "./" });
-
-            registration.addEventListener("updatefound", () => {
-                const newWorker = registration.installing;
-                if (!newWorker) return;
-
-                newWorker.addEventListener("statechange", () => {
-                    if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-                        if (pwaBar && pwaStatus) {
-                            pwaBar.hidden = false;
-                            pwaStatus.textContent = "নতুন আপডেট পাওয়া গেছে! রিলোড করলে আপডেট হবে।";
-                        }
-                    }
-                });
-            });
-        } catch (err) {
-            if (pwaStatus) {
-                pwaStatus.textContent = "Service Worker রেজিস্টার করা যায়নি (HTTPS বা localhost প্রয়োজন)।";
-            }
-        }
-        updateNetworkStatus();
-    });
-}
 
 window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
