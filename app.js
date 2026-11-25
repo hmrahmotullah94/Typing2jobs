@@ -20,6 +20,21 @@ function hideInstallButton(){
 
 }
 
+// শুরুতে বাটন লুকিয়ে রাখুন (যতক্ষণ না ব্রাউজার নিশ্চিত করে যে অ্যাপটি ইনস্টল করা সম্ভব)
+if (pwaBar) {
+    pwaBar.hidden = true;
+}
+   
+  // Show the installation option when the browser allows installation.
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    showInstallBar();
+
+    console.log('PWA installation is available.');
+  });
+
+
 function updateNetworkStatus() {
     if (!pwaStatus) return;
     if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
@@ -67,19 +82,6 @@ window.addEventListener("beforeinstallprompt", (event) => {
     if (installButton) installButton.disabled = false;
     if (pwaStatus) pwaStatus.textContent = "অ্যাপটি ডিভাইসে ইনস্টল করার জন্য প্রস্তুত";
 });
-// শুরুতে বাটন লুকিয়ে রাখুন (যতক্ষণ না ব্রাউজার নিশ্চিত করে যে অ্যাপটি ইনস্টল করা সম্ভব)
-if (pwaBar) {
-    pwaBar.hidden = true;
-}
-   
-  // Show the installation option when the browser allows installation.
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault();
-    deferredPrompt = event;
-    showInstallBar();
-
-    console.log('PWA installation is available.');
-  });
 
 
 if (installButton) {
